@@ -11,7 +11,9 @@ import torch
 import torch.nn.functional as F
 
 def linear_beta_schedule(T: int, beta_start: float = 1e-4, beta_end: float = 0.02):
-    return torch.linspace(beta_start, beta_end, T)
+    space = torch.linspace(beta_start, beta_end, T)
+    space.to(torch.float32)
+    return space
 
 # Step 2 - alphas_from_betas (not yet solved)
 # TODO: implement
