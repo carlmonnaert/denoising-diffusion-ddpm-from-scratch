@@ -34,7 +34,7 @@ import torch
 import torch.nn.functional as F
 
 def extract_into_batch(a, t, x):
-    return torch.tensor( [ a[t[i]] for i in range(len(t)) ] ).reshape(-1, 1, 1, 1)
+    return a.gather(0, t.long() ).reshape(-1, 1, 1, 1)
 
 # Step 5 - q_sample (not yet solved)
 # TODO: implement
